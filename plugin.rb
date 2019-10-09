@@ -11,7 +11,7 @@ after_initialize {
       user = User.find_by_username('JohnDoe')
       min_date = Time.now - (5 * 24 * 60 * 60)
       
-      @popular_posts = Post
+      favorite_posts = Post
           .order("posts.score DESC")
           .for_mailing_list(user, min_date)
           .where('posts.post_type = ?', Post.types[:regular])
@@ -19,6 +19,9 @@ after_initialize {
           .where("posts.post_number > ?", 1)
           .where('posts.created_at < ?', (SiteSetting.editing_grace_period || 0).seconds.ago)
           .limit(5)
+      favorite_posts.each do |post|
+        puts post
+      end
     end
   end
 }
