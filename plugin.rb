@@ -6,8 +6,7 @@
 after_initialize {
   class ::Jobs::FavoritePost
     def execute(args)
-      
-      
+      SiteSetting.favorite_post = 12345
     end
   end
 }
