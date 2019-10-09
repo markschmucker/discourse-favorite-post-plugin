@@ -1,1 +1,3 @@
-
+en:
+  site_settings:
+    most_liked_post: "ID of post with most likes in 5 days. Set automatically by discourse-favorite-post-plugin."
