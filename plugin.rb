@@ -18,9 +18,10 @@ after_initialize {
           .where('posts.deleted_at IS NULL AND posts.hidden = false AND posts.user_deleted = false')
           .where("posts.post_number > ?", 1)
           .where('posts.created_at < ?', (SiteSetting.editing_grace_period || 0).seconds.ago)
-          .limit(5)
+          .limit(1)
       favorite_posts.each do |post|
         puts post
+        SiteSetting.favorite_post = post.id
       end
     end
   end
