@@ -1,1 +1,3 @@
-
+plugins:
+  most_liked_post:
+    default: 0
